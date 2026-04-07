@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+
+# Virtual Environments
+.venv
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Dependency/Package Files that might not match the container OS
+uv.lock
+
+# Build/Dist
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDE files
+.vscode/
+.idea/
+
+# Local test scripts
+test_env.py
