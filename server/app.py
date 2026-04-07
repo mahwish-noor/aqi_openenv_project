@@ -35,8 +35,13 @@ except Exception as e:  # pragma: no cover
         "openenv is required for the web interface. Install dependencies with '\n    uv sync\n'"
     ) from e
 
+import os
+
 from models import EcoGuardAction, EcoGuardObservation
 from server.aqi_openenv_project_environment import EcoGuardEnvironment
+
+# Force enable the OpenEnv web interface for uvicorn runs
+os.environ["ENABLE_WEB_INTERFACE"] = "true"
 
 
 # Create the app with web interface and README integration
