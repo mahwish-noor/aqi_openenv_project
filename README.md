@@ -1,6 +1,5 @@
 ---
 title: EcoGuard Environment Server
-emoji: 🏙️
 colorFrom: green
 colorTo: blue
 sdk: docker
