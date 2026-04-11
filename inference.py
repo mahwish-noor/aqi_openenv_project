@@ -27,7 +27,7 @@ def run_inference():
         env = EcoGuardEnv.from_docker_image(LOCAL_IMAGE_NAME)
     else:
         # Fallback to local server connection if no image specified
-        env = EcoGuardEnv.from_url("http://localhost:8000")
+        env = EcoGuardEnv.from_env("http://localhost:8000")
 
     result = env.reset()
     obs = result.observation
