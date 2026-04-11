@@ -24,10 +24,10 @@ def run_inference():
     
     # Connect to the environment
     if LOCAL_IMAGE_NAME:
-        env = EcoGuardEnv.from_docker_image(LOCAL_IMAGE_NAME)
+        raise NotImplementedError("LOCAL_IMAGE_NAME is not supported in simple sync mode with openenv>=0.1. Please run locally instead.")
     else:
         # Fallback to local server connection if no image specified
-        env = EcoGuardEnv.from_env("http://localhost:8000")
+        env = EcoGuardEnv(base_url="http://localhost:8000").sync()
 
     result = env.reset()
     obs = result.observation
