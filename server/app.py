@@ -35,8 +35,39 @@ except Exception as e:  # pragma: no cover
         "openenv is required for the web interface. Install dependencies with '\n    uv sync\n'"
     ) from e
 
-from models import EcoGuardAction, EcoGuardObservation
-from server.aqi_openenv_project_environment import EcoGuardEnvironment
+from ..models import EcoGuardAction, EcoGuardObservation
+from .aqi_openenv_project_environment import EcoGuardEnvironment
+from .tasks import (
+    grade_aqi_survival,
+    grade_efficiency_max,
+    grade_balanced_approach,
+)
+
+# Task definitions — mirror what openenv.yaml declares so the runtime
+# HTTP server can expose task metadata and grading endpoints.
+TASKS = [
+    {
+        "id": "aqi_survival",
+        "name": "AQI Survival",
+        "description": "Keep the AQI below the critical threshold.",
+        "difficulty": "easy",
+        "grader": grade_aqi_survival,
+    },
+    {
+        "id": "efficiency_max",
+        "name": "Efficiency Maximization",
+        "description": "Maximize the city's operational efficiency.",
+        "difficulty": "medium",
+        "grader": grade_efficiency_max,
+    },
+    {
+        "id": "balanced_approach",
+        "name": "Balanced Approach",
+        "description": "Balance AQI and efficiency.",
+        "difficulty": "hard",
+        "grader": grade_balanced_approach,
+    },
+]
 
 
 # Create the app with web interface and README integration
