@@ -1,11 +1,8 @@
 def _safe_float(val: float) -> float:
     try:
         score = float(val)
-        if score <= 0.0:
-            return 0.001
-        if score >= 1.0:
-            return 0.999
-        return score
+        epsilon=1e-6
+        return max(epsilon, min(1.0 - epsilon, score))
     except Exception:
         return 0.50
 
