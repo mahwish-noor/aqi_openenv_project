@@ -2,21 +2,21 @@ spec_version: 1
 name: aqi_openenv_project
 type: space
 runtime: fastapi
-app: server.app:app
+app: aqi_openenv_project.server.app:app
 port: 8000
 tasks:
   - id: "aqi_survival"
     name: "AQI Survival"
     description: "Keep the AQI below the critical threshold."
     difficulty: "easy"
-    grader: "server.tasks:grade_aqi_survival"
+    grader: "aqi_openenv_project.server.tasks:grade_aqi_survival"
   - id: "efficiency_max"
     name: "Efficiency Maximization"
     description: "Maximize the city's operational efficiency."
     difficulty: "medium"
-    grader: "server.tasks:grade_efficiency_max"
+    grader: "aqi_openenv_project.server.tasks:grade_efficiency_max"
   - id: "balanced_approach"
     name: "Balanced Approach"
     description: "Balance AQI and efficiency."
     difficulty: "hard"
-    grader: "server.tasks:grade_balanced_approach"
+    grader: "aqi_openenv_project.server.tasks:grade_balanced_approach"
