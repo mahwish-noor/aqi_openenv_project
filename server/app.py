@@ -35,13 +35,22 @@ except Exception as e:  # pragma: no cover
         "openenv is required for the web interface. Install dependencies with '\n    uv sync\n'"
     ) from e
 
-from ..models import EcoGuardAction, EcoGuardObservation
-from .aqi_openenv_project_environment import EcoGuardEnvironment
-from .tasks import (
-    grade_aqi_survival,
-    grade_efficiency_max,
-    grade_balanced_approach,
-)
+try:
+    from ..models import EcoGuardAction, EcoGuardObservation
+    from .aqi_openenv_project_environment import EcoGuardEnvironment
+    from .tasks import (
+        grade_aqi_survival,
+        grade_efficiency_max,
+        grade_balanced_approach,
+    )
+except ImportError:
+    from models import EcoGuardAction, EcoGuardObservation  # type: ignore[no-redef]
+    from server.aqi_openenv_project_environment import EcoGuardEnvironment  # type: ignore[no-redef]
+    from server.tasks import (  # type: ignore[no-redef]
+        grade_aqi_survival,
+        grade_efficiency_max,
+        grade_balanced_approach,
+    )
 
 # Task definitions — mirror what openenv.yaml declares so the runtime
 # HTTP server can expose task metadata and grading endpoints.
